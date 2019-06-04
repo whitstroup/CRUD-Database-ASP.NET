@@ -1,0 +1,32 @@
+﻿@model InClassAspNet.ViewModels.ProductIndexViewModel
+
+@{ ViewData["Title"] = "Products Home Page";
+}
+
+<h2>Index</h2>
+
+    
+<table class="table table-bordered table-hover">
+    <tbody>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Delete?</th>
+        </tr>
+        @foreach (Product product in Model.Products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    @using (Html.BeginForm("Delete", "Product", "Post"))
+                    {
+                        <input asp-for="IdForDeletion" class="control-label" type="hidden" value="@product.ID" />
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                      }
+
+                </td>
+            </tr>
+         }
+    </tbody>
+</table>
