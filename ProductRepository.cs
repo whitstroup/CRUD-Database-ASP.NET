@@ -7,7 +7,8 @@ namespace InClassAspNet
 {
     public class ProductRepository
     {
-        private string ConnectionStr = "Server=localhost;Database=BestBuy;Uid=root;Pwd=whitwins75;";
+        string password = System.IO.File.ReadAllText("PWORD");
+        private string ConnectionStr = "Server=localhost;Database=BestBuy;Uid=root;Pwd=" + password + ";";
 
         public List<Models.Product> GetAllProducts()
         {
